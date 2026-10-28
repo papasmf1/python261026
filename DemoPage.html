@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML5 · CSS3 · JavaScript 학습 페이지</title>
+<style>
+  :root { --main: #4f46e5; --bg: #f5f6fa; --card: #fff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Malgun Gothic", sans-serif; background: var(--bg); color: #222; }
+  header { background: linear-gradient(135deg, var(--main), #06b6d4); color: #fff; padding: 2rem 1rem; text-align: center; }
+  nav { display: flex; justify-content: center; gap: 1rem; background: #fff; padding: .8rem; position: sticky; top: 0; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
+  nav a { color: var(--main); text-decoration: none; font-weight: bold; padding: .3rem .8rem; border-radius: 6px; transition: background .3s; }
+  nav a:hover { background: #e0e7ff; }
+  main { max-width: 900px; margin: 1.5rem auto; padding: 0 1rem; display: grid; gap: 1.5rem; }
+  section { background: var(--card); padding: 1.5rem; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.08); }
+  h2 { margin-top: 0; color: var(--main); }
+  code, pre { background: #1e1e2e; color: #cdd6f4; border-radius: 6px; }
+  code { padding: 2px 6px; }
+  pre { padding: 1rem; overflow-x: auto; }
+  input, select, button, textarea { font: inherit; padding: .5rem .8rem; margin: .2rem 0; border: 1px solid #ccc; border-radius: 6px; }
+  button { background: var(--main); color: #fff; border: 0; cursor: pointer; transition: transform .2s; }
+  button:hover { transform: scale(1.05); }
+  /* CSS3 데모 */
+  .boxes { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .box { width: 90px; height: 90px; border-radius: 12px; display: grid; place-items: center; color: #fff; font-weight: bold; transition: all .5s; }
+  .box:nth-child(1) { background: #ef4444; }
+  .box:nth-child(2) { background: #f59e0b; }
+  .box:nth-child(3) { background: #10b981; }
+  .box:hover { transform: rotate(360deg) scale(1.2); border-radius: 50%; }
+  .spin { animation: bounce 1s infinite alternate; }
+  @keyframes bounce { to { transform: translateY(-15px); } }
+  #output { margin-top: .5rem; padding: .6rem; background: #eef2ff; border-radius: 6px; min-height: 1.5rem; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { border: 1px solid #ddd; padding: .5rem; text-align: left; }
+  th { background: #e0e7ff; }
+  footer { text-align: center; padding: 1.5rem; color: #666; }
+  @media (max-width: 600px) { nav { flex-wrap: wrap; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>웹 기초 학습 페이지</h1>
+  <p>HTML5 · CSS3 · JavaScript를 직접 체험해 보세요</p>
+</header>
+
+<nav>
+  <a href="#html">HTML5</a>
+  <a href="#css">CSS3</a>
+  <a href="#js">JavaScript</a>
+  <a href="#quiz">퀴즈</a>
+</nav>
+
+<main>
+  <section id="html">
+    <h2>1. HTML5 - 구조</h2>
+    <p>시맨틱 태그(<code>header</code>, <code>nav</code>, <code>main</code>, <code>section</code>, <code>footer</code>)로 문서 구조를 표현합니다.</p>
+    <h3>폼 요소 예제</h3>
+    <form id="form" onsubmit="return false;">
+      <label>이름: <input type="text" id="name" placeholder="이름 입력" required></label><br>
+      <label>이메일: <input type="email" id="email" placeholder="a@b.com"></label><br>
+      <label>나이: <input type="number" id="age" min="1" max="120" value="20"></label><br>
+      <label>좋아하는 색: <input type="color" id="color" value="#4f46e5"></label><br>
+      <label>언어:
+        <select id="lang">
+          <option>HTML5</option><option>CSS3</option><option>JavaScript</option>
+        </select>
+      </label><br>
+      <button type="submit" id="submitBtn">제출</button>
+    </form>
+    <div id="output">결과가 여기에 표시됩니다.</div>
+    <h3>표 예제</h3>
+    <table>
+      <tr><th>기술</th><th>역할</th></tr>
+      <tr><td>HTML5</td><td>구조와 내용</td></tr>
+      <tr><td>CSS3</td><td>스타일과 레이아웃</td></tr>
+      <tr><td>JavaScript</td><td>동작과 상호작용</td></tr>
+    </table>
+  </section>
+
+  <section id="css">
+    <h2>2. CSS3 - 스타일</h2>
+    <p>Flexbox, Grid, transition, animation, 미디어쿼리를 사용합니다. 박스에 마우스를 올려보세요.</p>
+    <div class="boxes">
+      <div class="box">A</div>
+      <div class="box">B</div>
+      <div class="box">C</div>
+      <div class="box spin" style="background:#6366f1">D</div>
+    </div>
+    <pre>.box:hover { transform: rotate(360deg) scale(1.2); border-radius: 50%; }</pre>
+  </section>
+
+  <section id="js">
+    <h2>3. JavaScript - 동작</h2>
+    <h3>카운터</h3>
+    <button id="dec">-</button>
+    <strong id="count" style="margin:0 1rem;font-size:1.5rem">0</strong>
+    <button id="inc">+</button>
+    <h3>할 일 목록 (DOM 조작)</h3>
+    <input type="text" id="todoInput" placeholder="할 일 입력">
+    <button id="addTodo">추가</button>
+    <ul id="todoList"></ul>
+    <h3>현재 시간</h3>
+    <p id="clock"></p>
+    <button id="themeBtn">배경색 바꾸기</button>
+  </section>
+
+  <section id="quiz">
+    <h2>4. 간단 퀴즈</h2>
+    <p>CSS에서 글자색을 바꾸는 속성은?</p>
+    <button class="q" data-ans="0">font-color</button>
+    <button class="q" data-ans="1">color</button>
+    <button class="q" data-ans="0">text-style</button>
+    <p id="quizResult"></p>
+  </section>
+</main>
+
+<footer>&copy; 2026 학습용 데모 페이지</footer>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+
+  // 폼 제출
+  $('submitBtn').addEventListener('click', () => {
+    if (!$('name').value.trim()) { $('output').textContent = '이름을 입력하세요.'; return; }
+    $('output').textContent =
+      `${$('name').value}님(${$('age').value}세), 학습 언어: ${$('lang').value}`;
+    $('output').style.borderLeft = `6px solid ${$('color').value}`;
+  });
+
+  // 카운터
+  let count = 0;
+  const show = () => $('count').textContent = count;
+  $('inc').onclick = () => { count++; show(); };
+  $('dec').onclick = () => { count--; show(); };
+
+  // 할 일 목록
+  function addTodo() {
+    const text = $('todoInput').value.trim();
+    if (!text) return;
+    const li = document.createElement('li');
+    li.textContent = text + ' ';
+    const del = document.createElement('button');
+    del.textContent = '삭제';
+    del.onclick = () => li.remove();
+    li.appendChild(del);
+    $('todoList').appendChild(li);
+    $('todoInput').value = '';
+  }
+  $('addTodo').onclick = addTodo;
+  $('todoInput').addEventListener('keydown', e => { if (e.key === 'Enter') addTodo(); });
+
+  // 시계
+  setInterval(() => $('clock').textContent = new Date().toLocaleString('ko-KR'), 1000);
+  $('clock').textContent = new Date().toLocaleString('ko-KR');
+
+  // 배경색 변경
+  $('themeBtn').onclick = () => {
+    document.body.style.background = `hsl(${Math.floor(Math.random() * 360)}, 70%, 92%)`;
+  };
+
+  // 퀴즈
+  document.querySelectorAll('.q').forEach(b => b.addEventListener('click', () => {
+    $('quizResult').textContent = b.dataset.ans === '1' ? '정답입니다! 🎉' : '틀렸어요. 다시 시도하세요.';
+  }));
+</script>
+</body>
+</html>
