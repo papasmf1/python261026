@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <p class="eyebrow">MY DAY, MY PACE</p>
+        <h1>오늘의 할 일</h1>
+        <p class="subtitle">작은 한 걸음부터 차근차근 정리해 보세요.</p>
+      </header>
+
+      <section class="todo-panel" aria-label="할 일 관리">
+        <form class="todo-form" id="todo-form">
+          <label class="sr-only" for="todo-input">새 할 일</label>
+          <input
+            id="todo-input"
+            name="title"
+            type="text"
+            placeholder="어떤 일을 할까요?"
+            autocomplete="off"
+            aria-describedby="form-error"
+            required
+          >
+          <button class="primary-button" type="submit">추가</button>
+          <p class="form-error" id="form-error" aria-live="polite"></p>
+        </form>
+
+        <div class="list-toolbar">
+          <div class="filters" role="group" aria-label="할 일 필터">
+            <button class="filter-button" type="button" data-filter="all" aria-pressed="true">전체</button>
+            <button class="filter-button" type="button" data-filter="active" aria-pressed="false">미완료</button>
+            <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">완료</button>
+          </div>
+          <p class="summary" id="summary" aria-live="polite"></p>
+        </div>
+
+        <p class="storage-notice" id="storage-notice" role="status" aria-live="polite" hidden></p>
+        <ul class="todo-list" id="todo-list" aria-label="할 일 목록"></ul>
+        <p class="empty-state" id="empty-state"></p>
+      </section>
+      <footer class="app-footer">할 일은 이 브라우저에만 저장됩니다.</footer>
+    </main>
+  </body>
+</html>
